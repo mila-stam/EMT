@@ -20,15 +20,20 @@ public class Book {
 
     private Integer availableCopies;
 
+    private String description;
+
     public Book() {
     }
 
-    public Book(String name, Category category, Author author, Integer availableCopies) {
+    public Book(String name, Category category, Author author, Integer availableCopies, String description) {
         this.name = name;
         this.category = category;
         this.author = author;
         this.availableCopies = availableCopies;
+        this.description = description;
     }
+
+
 
     public Long getId() {
         return id;
@@ -68,5 +73,13 @@ public class Book {
 
     public void setAvailableCopies(Integer availableCopies) {
         this.availableCopies = availableCopies;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

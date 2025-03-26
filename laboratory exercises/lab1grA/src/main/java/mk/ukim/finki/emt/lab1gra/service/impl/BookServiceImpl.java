@@ -59,7 +59,8 @@ public class BookServiceImpl implements BookService {
                             bookDto.getName(),
                             Category.valueOf(bookDto.getCategory().toUpperCase()),
                             authorService.findById(bookDto.getAuthorId()).get(),
-                            bookDto.getAvailableCopies()))
+                            bookDto.getAvailableCopies(),
+                            bookDto.getDescription()))
             );
         }
         return Optional.empty();
@@ -79,5 +80,15 @@ public class BookServiceImpl implements BookService {
             book.setAvailableCopies(book.getAvailableCopies() - 1);
             bookRepository.save(book);
         }
+    }
+
+    @Override
+    public List<Book> filterBooks(String title, String authorName, String description) {
+        title = title == null ? "" : title;
+        authorName = authorName == null ? "" : authorName;
+        description = description == null ? "" : description;
+
+        return bookRepository.findByNameContainingIgnoreCaseAndAuthor_NameContainingIgnoreCaseAndDescriptionContainingIgnoreCase(
+                title, authorName, description);
     }
 }

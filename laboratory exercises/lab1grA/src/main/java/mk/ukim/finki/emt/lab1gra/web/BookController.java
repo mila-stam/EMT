@@ -60,4 +60,11 @@ public class BookController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/filter")
+    public List<Book> filterBooks(@RequestParam(required = false) String title,
+                                  @RequestParam(required = false) String author,
+                                  @RequestParam(required = false) String description){
+        return bookService.filterBooks(title, author, description);
+    }
 }

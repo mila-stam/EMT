@@ -34,9 +34,9 @@ public class DataInitializer {
         Author author3 = authorRepository.save(new Author("Harper", "Lee", USD));
 
 
-        Book book1 = bookRepository.save(new Book("Hunger Games", Category.FANTASY, author1, 455));
-        Book book2 = bookRepository.save(new Book("Little Women", Category.DRAMA, author2, 1367));
-        Book book3 = bookRepository.save(new Book("To Kill a Mockingbird", Category.NOVEL, author1, 872));
+        Book book1 = bookRepository.save(new Book("Hunger Games", Category.FANTASY, author1, 455, "book about surviving"));
+        Book book2 = bookRepository.save(new Book("Little Women", Category.DRAMA, author2, 1367, "book about women supporting each other"));
+        Book book3 = bookRepository.save(new Book("To Kill a Mockingbird", Category.NOVEL, author1, 872, "book about the mocking bird"));
 
         bookRepository.saveAll(List.of(book1, book2, book3));
     }

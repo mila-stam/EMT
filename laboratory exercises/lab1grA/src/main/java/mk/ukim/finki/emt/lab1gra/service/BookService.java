@@ -18,4 +18,6 @@ public interface BookService {
     void deleteById(Long id);
 
     void markAsRented(Long id);
+
+    List<Book> filterBooks(String title, String author, String description );
 }

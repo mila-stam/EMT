@@ -16,12 +16,7 @@ public class BookDto {
 
     private Integer availableCopies;
 
-//    public BookDto(String name, String category, Long authorId, Integer availableCopies) {
-//        this.name = name;
-//        this.category = category;
-//        this.authorId = authorId;
-//        this.availableCopies = availableCopies;
-//    }
+    private String description;
 
     public String getName() {
         return name;
@@ -53,5 +48,13 @@ public class BookDto {
 
     public void setAvailableCopies(Integer availableCopies) {
         this.availableCopies = availableCopies;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
