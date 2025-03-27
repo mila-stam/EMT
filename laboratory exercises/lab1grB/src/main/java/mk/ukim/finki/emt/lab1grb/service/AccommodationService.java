@@ -12,5 +12,5 @@ public interface AccommodationService {
     Optional<Accommodation> update(Long id, AccommodationDto accommodationDto);
     Optional<Accommodation> save(AccommodationDto accommodationDto);
     void deleteById(Long id);
-    void markAsRented(Long id);
+    //void markAsRented(Long id);
 }

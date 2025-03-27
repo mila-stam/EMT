@@ -8,6 +8,7 @@ public class AccommodationDto {
     private String category;
     private Long hostId;
     private Integer numRooms;
+    private Long reservationId;
 
     public String getName() {
         return name;
@@ -39,5 +40,13 @@ public class AccommodationDto {
 
     public void setNumRooms(Integer numRooms) {
         this.numRooms = numRooms;
+    }
+
+    public void setReservationId(Long reservationId) {
+        this.reservationId = reservationId;
+    }
+
+    public Long getReservationId() {
+        return reservationId;
     }
 }

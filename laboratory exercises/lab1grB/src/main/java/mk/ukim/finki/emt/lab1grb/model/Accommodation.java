@@ -1,7 +1,11 @@
 package mk.ukim.finki.emt.lab1grb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,6 +19,9 @@ public class Accommodation {
     @ManyToOne
     private Host host;
     private Integer numRooms;
+    @JsonIgnore
+    @OneToMany(mappedBy = "accommodation")
+    private List<Reservation> reservation;
 
     public Accommodation() {
     }
@@ -24,6 +31,7 @@ public class Accommodation {
         this.category = category;
         this.host = host;
         this.numRooms = numRooms;
+        this.reservation = new ArrayList<Reservation>();
     }
 
     public Long getId() {
@@ -65,4 +73,12 @@ public class Accommodation {
     public void setNumRooms(Integer numRooms) {
         this.numRooms = numRooms;
     }
+
+//    public void setReservation(Reservation reservation) {
+//        this.reservation = reservation;
+//    }
+//
+//    public Reservation getReservation() {
+//        return reservation;
+//    }
 }

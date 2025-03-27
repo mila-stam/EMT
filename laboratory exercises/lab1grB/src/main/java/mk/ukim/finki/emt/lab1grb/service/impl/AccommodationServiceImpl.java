@@ -7,6 +7,7 @@ import mk.ukim.finki.emt.lab1grb.model.dto.AccommodationDto;
 import mk.ukim.finki.emt.lab1grb.repository.AccommodationRepository;
 import mk.ukim.finki.emt.lab1grb.service.AccommodationService;
 import mk.ukim.finki.emt.lab1grb.service.HostService;
+import mk.ukim.finki.emt.lab1grb.service.ReservationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +17,12 @@ import java.util.Optional;
 public class AccommodationServiceImpl implements AccommodationService {
     private final AccommodationRepository accommodationRepository;
     private final HostService hostService;
+//    private final ReservationService reservationService;
 
     public AccommodationServiceImpl(AccommodationRepository accommodationRepository, HostService hostService) {
         this.accommodationRepository = accommodationRepository;
         this.hostService = hostService;
+//        this.reservationService = reservationService;
     }
 
     @Override
@@ -47,6 +50,9 @@ public class AccommodationServiceImpl implements AccommodationService {
             if(accommodationDto.getHostId() != null && hostService.findById(accommodationDto.getHostId()).isPresent()) {
                 existingAcc.setHost(hostService.findById(accommodationDto.getHostId()).get());
             }
+//            if(accommodationDto.getReservationId() != null && reservationService.findById(accommodationDto.getReservationId()).isPresent()) {
+//                existingAcc.setReservation(reservationService.findById(accommodationDto.getReservationId()).get());
+//            }
             return accommodationRepository.save(existingAcc);
         });
 
@@ -61,6 +67,7 @@ public class AccommodationServiceImpl implements AccommodationService {
                             Category.valueOf(accommodationDto.getCategory()),
                             hostService.findById(accommodationDto.getHostId()).get(),
                             accommodationDto.getNumRooms()
+//                            reservationService.findById(accommodationDto.getReservationId()).get()
                     ))
             );
         }
@@ -72,12 +79,12 @@ public class AccommodationServiceImpl implements AccommodationService {
         accommodationRepository.deleteById(id);
     }
 
-    @Override
-    public void markAsRented(Long id) {
-        Accommodation accommodation = accommodationRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not found"));
-        if(accommodation.getNumRooms() > 0){
-            accommodation.setNumRooms(accommodation.getNumRooms() - 1);
-            accommodationRepository.save(accommodation);
-        }
-    }
+//    @Override
+//    public void markAsRented(Long id) {
+//        Accommodation accommodation = accommodationRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not found"));
+//        if(accommodation.getNumRooms() > 0){
+//            accommodation.setNumRooms(accommodation.getNumRooms() - 1);
+//            accommodationRepository.save(accommodation);
+//        }
+//    }
 }

@@ -58,14 +58,14 @@ public class AccommodationController {
         }
     }
 
-    //rent
-    @PatchMapping("/rent/{id}")
-    public ResponseEntity<Accommodation> markAsRented(@PathVariable Long id){
-        if(accommodationService.findById(id).isPresent()){
-            accommodationService.markAsRented(id);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    //rent
+//    @PatchMapping("/rent/{id}")
+//    public ResponseEntity<Accommodation> markAsRented(@PathVariable Long id){
+//        if(accommodationService.findById(id).isPresent()){
+//            accommodationService.markAsRented(id);
+//            return ResponseEntity.ok().build();
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 }
